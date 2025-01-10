@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Search and Sort</title>
+</head>
+<body>
+<form method="post">
+    <table border="1">
+        <tr>
+            <td>Min Value:</td>
+            <td><input type="text" name="min_value" id="min_value" size="15" /></td>
+        </tr>
+        <tr>
+            <td>Max Value:</td>
+            <td><input type="text" name="max_value" id="max_value" size="15" /></td>
+        </tr>
+        <tr>
+            <td>Sort Order:</td>
+            <td>
+                <select name="sort_order" id="sort_order">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="do_orders" type="submit">Search And Sort Order</button>
+            </td>
+        </tr>
+    </table>
+    {% if tables %}
+        <h3>Search Results:</h3>
+        {% for table in tables %}
+            <div>
+                {{ titles[loop.index] }}
+                {{ table|safe }}
+            </div>
+        {% endfor %}
+    {% endif %}
+</form>
+</body>
+</html>
